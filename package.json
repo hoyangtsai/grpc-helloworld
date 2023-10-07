@@ -1,0 +1,25 @@
+{
+  "name": "grpc-helloworld",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:pb": "protoc -I=. helloworld.proto --js_out=import_style=commonjs:. --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.",
+    "build:js": "webpack ./client.js",
+    "prestart": "npm run build:pb && npm run build:js",
+    "start": "npx http-server -p 8081"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.5",
+    "@grpc/proto-loader": "^0.7.10",
+    "async": "^3.2.4",
+    "google-protobuf": "^3.21.2",
+    "grpc-web": "^1.4.2",
+    "lodash": "^4.17.21",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
